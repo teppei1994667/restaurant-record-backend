@@ -68,4 +68,8 @@ Rails.application.configure do
 
   # Raise error when a before_action's only/except options reference missing actions
   config.action_controller.raise_on_missing_callback_actions = true
+
+  # DockerでNext.jsと通信時SSRの使用を考慮してapp:3000からの通信を許可
+  config.hosts << "app:3000"
+
 end
