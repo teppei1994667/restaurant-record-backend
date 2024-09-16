@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   include DeviseTokenAuth::Concerns::User
@@ -10,5 +10,4 @@ class User < ActiveRecord::Base
   # カラムのバリデーション
   validates :name, presence: true
   validates :email, presence: true
-
 end
