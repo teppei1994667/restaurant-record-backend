@@ -4,9 +4,14 @@ Rails.application.routes.draw do
     namespace :v1 do
       mount_devise_token_auth_for "User", at: "auth", controllers: {
         registrations: "api/v1/auth/registrations",
+        sessions: "api/v1/auth/sessions"
       }
+
+      # resource :user, only: [:show]
+      get "authenticated" => "users#authenticated"
     end
   end
+
 
   # クライアントとの接続確認の為作成(削除予定)
   resources :tests

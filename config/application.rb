@@ -31,5 +31,10 @@ module App
 
     # 日本語対応
     config.i18n.default_locale = :ja
+
+    # devise-token-auth用の認証
+    config.session_store :cookie_store, key: '_interslice_session'
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use config.session_store, config.session_options
   end
 end
