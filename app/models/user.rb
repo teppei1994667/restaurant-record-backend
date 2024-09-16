@@ -6,4 +6,9 @@ class User < ActiveRecord::Base
   include DeviseTokenAuth::Concerns::User
   # 他に使用可能なモジュール
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+
+  # カラムのバリデーション
+  validates :name, presence: true
+  validates :email, presence: true
+
 end
