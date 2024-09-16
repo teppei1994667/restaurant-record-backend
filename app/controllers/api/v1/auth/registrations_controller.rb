@@ -14,7 +14,6 @@ class Api::V1::Auth::RegistrationsController < DeviseTokenAuth::RegistrationsCon
     return unless @resource.persisted?
 
     token = @resource.create_new_auth_token
-    puts token
     response.set_header("access-token", token["access-token"])
     response.set_header("client", token["client"])
   end
