@@ -8,7 +8,7 @@ Rails.application.routes.draw do
       }
 
       # resource :user, only: [:show]
-      get "authenticated" => "users#authenticated"
+      get "user/authenticated" => "users#authenticated"
     end
   end
 
