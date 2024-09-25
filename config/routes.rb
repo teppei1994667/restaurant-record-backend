@@ -7,7 +7,7 @@ Rails.application.routes.draw do
         sessions: "api/v1/auth/sessions"
       }
 
-      # resource :user, only: [:show]
+      get "user/authenticated" => "users#authenticated"
       get "user/show" => "users#show"
     end
   end
