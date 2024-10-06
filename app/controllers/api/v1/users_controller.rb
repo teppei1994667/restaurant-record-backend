@@ -4,9 +4,10 @@ class Api::V1::UsersController < ApplicationController
   def authenticated
     if current_api_v1_user
       render json: {is_login: true}
-      return
+    else
+      render json: {is_login: false}
     end
-    render json: {is_login: false}
+    
 
   end
 
