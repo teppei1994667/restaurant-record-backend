@@ -17,6 +17,7 @@ AllCops:
     - "vendor/**/*"
     - "lib/tasks/auto_annotate_models.rake"
     - "config/environments/*"
+    - "config/initializers/*"
     - "config/puma.rb"
 
 # 設定が厳しいので一旦全てfalseにする
@@ -87,3 +88,12 @@ Rails/I18nLocaleTexts:
 # before_actionの際の未定義メソッドのチェック（deviseとの兼ね合いで一旦false）
 Rails/LexicallyScopedActionFilter:
   Enabled: false
+
+# HTTP ステータスを記述するために数値の使用を強制します。
+Rails/HttpStatus:
+  EnforcedStyle: numeric
+
+# 複数行のメソッド定義の引数が固定インデントで揃っているかどうかを確認します。
+# どちらが良いか検討中のため一旦コメントアウト
+# Layout/ArgumentAlignment:
+#   EnforcedStyle: with_fixed_indentation

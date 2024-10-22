@@ -6,7 +6,6 @@ class TestsController < ApplicationController
 
   def create
     @test = Test.new(test_params)
-    puts test_params
     if @test.save
       return_test = Test.all
       render status: 200, json: return_test
