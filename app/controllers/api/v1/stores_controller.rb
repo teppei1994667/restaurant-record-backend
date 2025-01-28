@@ -4,7 +4,12 @@ class Api::V1::StoresController < ApplicationController
   def create
     store = Store.new(store_params)
     if store.save
-      render json: {store: store}
+      # store_name_only_flgが1の場合はstore_nameのみを返却
+      if params[:store_name_only_flg] == "1"
+        render json: { store_name: store.store_name }, status: :created
+      else
+        render json: { store: store }, status: :created
+      end
     else
       render json: { errors: store.errors.full_messages }, status: :unprocessable_entity
     end
