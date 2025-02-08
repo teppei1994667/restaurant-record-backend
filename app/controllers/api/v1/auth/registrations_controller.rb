@@ -4,7 +4,7 @@ class Api::V1::Auth::RegistrationsController < DeviseTokenAuth::RegistrationsCon
   after_action :set_token_info, only: [:create]
 
   def update
-    if current_api_v1_user.update(account_update_params)
+    if current_api_v1_user.update(user_info_update_params)
       render json: {user_model: current_api_v1_user}
     else
       render json: { errors: current_api_v1_user.errors.full_messages }, status: :unprocessable_entity
@@ -21,11 +21,13 @@ class Api::V1::Auth::RegistrationsController < DeviseTokenAuth::RegistrationsCon
 
   private
 
+  # 新規登録時のパラメータを設定
   def sign_up_params
     params.require(:registration).permit(:name, :email, :password, :password_confirmation)
   end
 
-  def account_update_params
+  # ユーザー情報更新時のパラメータを設定
+  def user_info_update_params
     params.require(:registration).permit(:name, :email)
   end
 
