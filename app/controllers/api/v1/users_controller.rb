@@ -12,6 +12,12 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def show
-    render json: {user: current_api_v1_user }
+    store = Store.includes(:user)
+    @stores = store.where(user_id: current_api_v1_user.id)
+    store_names = []
+    @stores.each do |store|
+      store_names.push(store.store_name)
+    end
+    render json: {user: current_api_v1_user, store_names: store_names }
   end
 end

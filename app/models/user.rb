@@ -9,5 +9,8 @@ class User < ApplicationRecord
 
   # カラムのバリデーション
   validates :name, presence: true
-  validates :email, presence: true
+  validates :email, presence: true, uniqueness: true
+
+  # モデルの関連付け
+  has_many :stores, dependent: :destroy
 end

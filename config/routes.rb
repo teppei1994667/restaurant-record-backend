@@ -9,8 +9,12 @@ Rails.application.routes.draw do
 
       get "user/authenticated" => "users#authenticated"
       get "user/show" => "users#show"
+      
+      # store
+      resources :stores
     end
   end
+
 
 
   # クライアントとの接続確認の為作成(削除予定)
